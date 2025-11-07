@@ -1,0 +1,21 @@
+name: Run Test Suite
+
+on:
+  pull_request:
+    branches:
+      - master
+      - three-cycle-experience
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup yarn/node leveraging full caching
+        uses: ./.github/setup-yarn-with-caching
+
+      - run: yarn lint
+      - run: yarn test
+      - run: yarn tc
+      - run: yarn format-check

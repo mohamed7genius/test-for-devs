@@ -1,0 +1,38 @@
+name: Setup npm with caching
+
+description: Installs node modules and caches them for reusability
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup specific node version
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: .tool-versions
+        cache: "yarn"
+
+    - name: Configure Git to use HTTPS
+      run: git config --global url."https://github.com/".insteadOf "git@github.com:"
+      shell: bash
+
+    - name: Verify Git Configuration
+      run: git config --global --list
+      shell: bash
+
+    - name: Cache node modules
+      id: cache-nodemodules
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Install React Native Project Related Dependencies
+      if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+      run: yarn install --immutable --immutable-cache --check-cache
+      shell: bash
