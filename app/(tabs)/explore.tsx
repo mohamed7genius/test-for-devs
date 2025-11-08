@@ -8,7 +8,7 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Fonts } from "@/constants/theme";
-
+import HelloBox from "@/components/HelloBox";
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
@@ -32,6 +32,10 @@ export default function TabTwoScreen() {
           Explore
         </ThemedText>
       </ThemedView>
+      <ThemedText>
+        This app includes example code to help you get started.
+      </ThemedText>
+      <HelloBox />
       <ThemedText>
         This app includes example code to help you get started.
       </ThemedText>
