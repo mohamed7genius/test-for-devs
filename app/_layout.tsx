@@ -16,6 +16,11 @@ export const unstable_settings = {
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
+  // Dummy env file checker
+  if (process.env.EXPO_PUBLIC_ENV !== "development") {
+    throw new Error("Missing env file!");
+  }
+
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>

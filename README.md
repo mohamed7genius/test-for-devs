@@ -2,49 +2,72 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Prerequisites
+
+Ensure the following are installed on your system:
+
+- [Node.js](https://nodejs.org/) (Recommended: LTS version)
+- [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) (Install it version `1.22.22`)
+- [Android Studio](https://developer.android.com/studio) with SDK tools (for Android development)
+- [Git](https://git-scm.com/downloads) and use gitbash as a default command line
+- [Xcode](https://developer.apple.com/xcode/) (for iOS development, macOS only)
+- [Watchman](https://facebook.github.io/watchman/) (for macOS users):
+
+  ```bash
+  brew install watchman
+  ```
+
 ## Get started
 
-1. Install dependencies
+1. Clone the repository:
 
    ```bash
-   npm install
+   git clone <repository-url>
+   cd <project-directory>
    ```
 
-2. Start the app
+2. Install dependencies
 
    ```bash
-   npx expo start
+   yarn install
    ```
 
-In the output, you'll find options to open the app in a
+3. Install pod dependencies for iOS (macOS only):
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   cd ios && pod install && cd ..
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. Check Expo setup :
 
-## Get a fresh project
+   ```bash
+   yarn react-native doctor
+   ```
 
-When you're ready, run:
+## Environment Configuration
 
-```bash
-npm run reset-project
+### .env File
+
+Create a `.env` file in the project root for environment variables:
+
+```env
+EXPO_PUBLIC_ENV=development
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+# Running the App
 
-## Learn more
+### Run Android Dev Env
 
-To learn more about developing your project with Expo, look at the following resources:
+1. Run the app on an Android device or emulator:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+ yarn android:dev
+```
 
-## Join the community
+### iOS Prod Environment (macOS only)
 
-Join our community of developers creating universal apps.
+1. Run the app on an iOS simulator:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+ yarn ios:dev
+```
