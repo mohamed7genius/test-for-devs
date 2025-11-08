@@ -1,6 +1,4 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Welcome to your test project 👋
 
 ## Prerequisites
 
@@ -71,3 +69,5 @@ EXPO_PUBLIC_ENV=development
 ```bash
  yarn ios:dev
 ```
+
+**This is a test repo that you shouldn't use until you are authorized to do!**
