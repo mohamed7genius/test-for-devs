@@ -3,8 +3,7 @@ name: Run Test Suite
 on:
   pull_request:
     branches:
-      - master
-      - three-cycle-experience
+      - main
 
 jobs:
   build:
