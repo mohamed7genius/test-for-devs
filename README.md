@@ -71,3 +71,5 @@ EXPO_PUBLIC_ENV=development
 ```bash
  yarn ios:dev
 ```
+
+**This is a test repo that you shouldn't use until you are authorized to do!**
