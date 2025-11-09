@@ -56,6 +56,13 @@ EXPO_PUBLIC_ENV=development
 
 # Running the App
 
+#### Make your android device ready
+
+1. [Open developer options in your android device](https://developer.android.com/studio/debug/dev-options)
+2. Go to developer options
+3. Open usb debugging
+4. Connect the android device through usb
+
 ### Run Android Dev Env
 
 1. Run the app on an Android device or emulator:
