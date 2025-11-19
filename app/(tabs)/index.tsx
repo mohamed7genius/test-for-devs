@@ -1,13 +1,21 @@
 import { Image } from "expo-image";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Link } from "expo-router";
-
+import { captureException } from "@sentry/react-native";
 export default function HomeScreen() {
+  function handleError() {
+    try {
+      throw new Error("Test error for Sentry");
+    } catch (error) {
+      captureException(error);
+      alert("Error captured and sent to Sentry!");
+    }
+  }
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -18,6 +26,23 @@ export default function HomeScreen() {
         />
       }
     >
+      <TouchableOpacity
+        style={{ marginBottom: 20, padding: 10, backgroundColor: "silver" }}
+        onPress={() => {
+          handleError();
+        }}
+      >
+        <Text>handled error</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{ marginBottom: 20, padding: 10, backgroundColor: "silver" }}
+        onPress={() => {
+          throw new Error("Unhandled crash test");
+        }}
+      >
+        <Text>Click me to crash the app</Text>
+      </TouchableOpacity>
+
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
